@@ -5,7 +5,7 @@
 
 //* 3. Creare un array di oggetti di studenti (ossìa oggetti con le proprietà sopra descritte).
 
-const studenti = [
+let studenti = [
     {
         nome:"Ana",
         cognome:"Japaridze",
@@ -59,8 +59,71 @@ for(let elemento of array){
 }
 }
 
-stampareNomeCognomeStudenti(studenti);
 //* 5. Dare la possibilità all’utente, attraverso 3 prompt(), di aggiungere all’array creato in precedenza, un nuovo oggetto studente inserendo nell’ ordine: nome, cognome e età.
+
+inserisciStudente(studenti);
+
+function inserisciStudente(array){
+let nomeInserito;
+let cognomeInserito;
+let etàInserita;
+
+    do{
+         nomeInserito = prompt("inserisci il nome dello studente");
+    }while(!validInsertion(nomeInserito,"text"));
+    
+    do{
+        cognomeInserito = prompt("inserisci il cognome dello studente");
+   }while(!validInsertion(cognomeInserito,"text"));
+
+   do{
+    etàInserita = prompt("inserisci l'età dello studente");
+}while(!validInsertion(etàInserita,"number"));
+
+    let studente = {
+        nome: `${nomeInserito}`,
+        cognome: `${cognomeInserito}`,
+        età: `${etàInserita}`,
+    }
+array.push(studente);
+console.log("inserzione eseguita con successo!");
+}
+
+
+
+// function isText(input){
+//     if(input.trim()=="" || typeof input != "string"){
+//     return false
+//     } else {
+//         return true
+//     }
+//     }
+    
+// function isNumber(input){
+//         if(input.trim()=="" || isNaN(input) == true){
+//             return false
+//         } else {
+//             return true
+//         }
+//     }    
+
+function validInsertion(input,type){
+if(type == "text"){
+    if(typeof input != "string" || input.trim()==""){
+        return false
+    } else {
+        return true
+    }
+
+} else if(type == "number"){
+   if(input.trim()=="" || isNaN(input) == true){
+    return false
+   }else {
+    return true
+   }
+}
+}
+
 
 //* BONUS: Usiamo il DOM per stampare e chiedere le informazioni all'utente!
 
